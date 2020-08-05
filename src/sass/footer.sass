@@ -1,0 +1,42 @@
+.footer
+    margin-top: 30px
+    margin-bottom: 30px
+    padding-left: 120px
+    padding-right: 120px
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    p
+        margin-top: 0
+        font-weight: bold
+    a
+        font-size: 13px
+        color: #000000
+        text-decoration: none
+        &:hover
+            color: #ffffff
+    img
+        width: 50px
+        margin-bottom: 16px
+    .footer_left-block
+        display: flex
+        flex-direction: column
+    .footer_right-block
+        display: flex
+        flex-direction: row
+        div
+            display: flex
+            flex-direction: column
+            margin-left: 15px
+
+@media (max-width: 600px)
+    .footer
+        flex-direction: column
+        margin-bottom: 20px
+        .footer_left-block
+            margin-top: 20px
+        .footer_right-block
+            margin-top: 20px
+            flex-direction: column
+    .app-bar
+        flex-direction: column
