@@ -4,7 +4,13 @@ import { Camera } from "./Camera";
 import Chat from "./Chat";
 import RoomsList from "./RoomsList";
 
-const Room = ({ room, user, onSendMessage, onStartPresenter }) => {
+const Room = ({
+  room,
+  user,
+  onSendMessage,
+  onStartPresenter,
+  onStopPresenter,
+}) => {
   const [isPresenter, setPresenter] = useState(false);
 
   useEffect(() => {
@@ -17,15 +23,15 @@ const Room = ({ room, user, onSendMessage, onStartPresenter }) => {
     <div className="room">
       <div className="room-body">
         <div className="room-body-left-block">
-        
-            <div className="room-video-player">
-              <Camera
-                isPresenter={isPresenter}
-                roomId={room.roomId}
-                onStartPresenter={onStartPresenter}
-              />
-            </div>
-         
+          <div className="room-video-player">
+            {room.stream ? "Стрим включен" : "Стрим выключен"}
+            <Camera
+              isPresenter={isPresenter}
+              roomId={room.roomId}
+              onStartPresenter={onStartPresenter}
+              onStopPresenter={onStopPresenter}
+            />
+          </div>
         </div>
         <div className="room-body-right-block">
           <Chat room={room} user={user} onSendMessage={onSendMessage} />

@@ -1,4 +1,5 @@
 import socket from "../../services/socket";
+import { disconnectAll } from "../../services/webrtc";
 
 export const setInputUser = (payload) => async (dispatch) => {
   dispatch({ type: "SET_INPUT_USER", payload });
@@ -48,10 +49,13 @@ const rtcConfig = {
   ],
 };
 export const startPresenter = (stream, roomId) => async (dispatch) => {
-  console.log("startPresenter");
   socket.emit("stream-room", { roomId });
 };
 
+export const stopPresenter = (roomId) => async (dispatch) => {
+  socket.emit("stop-stream-room", { roomId });
+  disconnectAll();
+};
 // var peerConnection;
 // export const startWatcher = (videoObj) => async (dispatch) => {
 //   console.log("startWatcher");
@@ -76,8 +80,6 @@ export const startPresenter = (stream, roomId) => async (dispatch) => {
 //           socket.emit("candidate", id, event.candidate);
 //         }
 //       };
-
-      
 
 //       socket.on("disconnectPeer", () => {
 //         peerConnection.close();

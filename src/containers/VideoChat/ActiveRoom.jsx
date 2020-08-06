@@ -5,6 +5,7 @@ import {
   newPersonalMessages,
   sendMessage,
   startPresenter,
+  stopPresenter,
 } from "../../actions/User";
 
 import Room from "../../components/VideoChat/Room";
@@ -17,7 +18,8 @@ const ActiveRoom = ({
   users,
   onSendMessage,
   onStartPresenter,
-  onJoinRoom
+  onStopPresenter,
+  onJoinRoom,
 }) => {
   if (activeRoom) {
     console.log("activeRoom", activeRoom);
@@ -32,6 +34,7 @@ const ActiveRoom = ({
               room={room}
               onSendMessage={onSendMessage}
               onStartPresenter={onStartPresenter}
+              onStopPresenter={onStopPresenter}
             />
           </div>
         );
@@ -64,6 +67,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onStartPresenter: (stream, roomId) => {
       dispatch(startPresenter(stream, roomId));
+    },
+    onStopPresenter: (roomId) => {
+      dispatch(stopPresenter(roomId));
     },
     onJoinRoom: (roomId) => {
       dispatch(joinRoom(roomId));

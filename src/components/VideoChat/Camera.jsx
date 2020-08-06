@@ -14,9 +14,13 @@ const CAPTURE_OPTIONS = {
 export let videoObj = undefined;
 export let videoStream = undefined;
 
-export const Camera = ({ isPresenter, onStartPresenter, roomId }) => {
+export const Camera = ({
+  isPresenter,
+  onStartPresenter,
+  onStopPresenter,
+  roomId,
+}) => {
   const videoRef = useRef();
-
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   console.log("isPresenter", isPresenter);
   const mediaStream = useMediaStream({
@@ -80,7 +84,7 @@ export const Camera = ({ isPresenter, onStartPresenter, roomId }) => {
                 <p>Начать стрим</p>
               </div>
               <div
-                onClick={() => disconnectAll()}
+                onClick={() => onStopPresenter(roomId)}
                 className="camera__begin-stream"
               >
                 <p>Закончить стрим</p>
