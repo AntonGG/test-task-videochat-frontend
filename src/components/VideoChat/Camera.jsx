@@ -76,16 +76,17 @@ export const Camera = ({
             />
           </div>
           {isPresenter && (
-            <div>
+            <div className="camera-btn-container">
               <div
                 onClick={() => onStartPresenter(mediaStream, roomId)}
-                className="camera__begin-stream"
+                className="camera-btn"
               >
                 <p>Начать стрим</p>
               </div>
+
               <div
                 onClick={() => onStopPresenter(roomId)}
-                className="camera__begin-stream"
+                className="camera-btn"
               >
                 <p>Закончить стрим</p>
               </div>

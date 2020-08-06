@@ -24,7 +24,7 @@ const Room = ({
       <div className="room-body">
         <div className="room-body-left-block">
           <div className="room-video-player">
-            {room.stream ? "Стрим включен" : "Стрим выключен"}
+            <p>{room.stream ? "Стрим включен" : "Стрим выключен"}</p>
             <Camera
               isPresenter={isPresenter}
               roomId={room.roomId}
